@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KaliZone — Play More. Have Fun!</title>
+<style>
+:root{--ink:#241b3b;--purple:#6c3ce8;--pink:#ff5fa2;--yellow:#ffd84d;--paper:#fffaf2;--muted:#766d83}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,"Segoe UI",sans-serif;background:var(--paper);color:var(--ink)}
+header{background:#fff;position:sticky;top:0;z-index:5;box-shadow:0 3px 18px #241b3b10}
+.nav{max-width:1120px;margin:auto;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:950;font-size:1.55rem;letter-spacing:-1px}.mark{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--yellow),var(--pink));display:grid;place-items:center;font-size:23px}.brand b{color:var(--purple)}
+nav{display:flex;gap:24px}nav a{color:var(--ink);text-decoration:none;font-weight:700}.lang{border:0;background:#f0eaff;color:#5630bb;padding:10px 15px;border-radius:999px;font-weight:800;cursor:pointer}
+main{max-width:1120px;margin:auto;padding:28px 22px 60px}
+.hero{background:linear-gradient(120deg,#673de0,#8c4be9 55%,#ff65a4);color:#fff;border-radius:30px;padding:52px 48px;position:relative;overflow:hidden;min-height:290px;display:flex;align-items:center}
+.hero:after{content:"🎮";position:absolute;right:7%;font-size:clamp(100px,18vw,190px);transform:rotate(-13deg);filter:drop-shadow(0 16px 10px #28105c44)}
+.hero-copy{position:relative;z-index:1;max-width:620px}.eyebrow{font-weight:800;letter-spacing:2px;color:#ffe88b;font-size:.78rem}
+h1{font-size:clamp(2.4rem,6vw,4.3rem);line-height:1.03;letter-spacing:-2px;margin:12px 0}.hero p{font-size:1.1rem;color:#f5eaff;margin:0 0 22px}
+.cta{display:inline-block;background:var(--yellow);color:#35234e;text-decoration:none;padding:13px 21px;border-radius:14px;font-weight:900;box-shadow:0 5px 0 #d7a92b}
+.search{margin:26px auto 34px;display:flex;gap:10px;max-width:650px;background:#fff;border:1px solid #eee5f7;border-radius:16px;padding:9px 14px;box-shadow:0 8px 24px #34214d0c}.search input{border:0;outline:0;flex:1;min-width:0;font:inherit;padding:7px}
+.head{display:flex;align-items:end;justify-content:space-between;margin:30px 0 16px}.head h2{font-size:1.65rem;margin:0}.head p{margin:4px 0 0;color:var(--muted)}
+.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.category{border:0;border-radius:18px;padding:19px 15px;text-align:left;background:#fff;box-shadow:0 6px 20px #34214d0b;cursor:pointer;color:var(--ink)}.emoji{font-size:2rem;display:block;margin-bottom:8px}.sub{font-size:.82rem;color:var(--muted);margin-top:3px}
+.games{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.game{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 6px 20px #34214d0b}.thumb{height:145px;display:grid;place-items:center;font-size:4.5rem}.t1{background:linear-gradient(135deg,#ffe17a,#ff9b75)}.t2{background:linear-gradient(135deg,#8be8d1,#61bce9)}.t3{background:linear-gradient(135deg,#c6a8ff,#ff9bc8)}
+.info{padding:15px}.info h3{margin:0 0 4px}.info p{margin:0;color:var(--muted);font-size:.88rem}.play{margin-top:13px;border:0;background:var(--purple);color:white;padding:9px 14px;border-radius:11px;font-weight:800}
+.game-modal{display:none;position:fixed;inset:0;background:#1d1538eF;z-index:20;overflow:auto;padding:22px;align-items:center;justify-content:center}.game-modal.open{display:flex}.game-box{width:min(620px,100%);background:#fffaf2;border-radius:24px;padding:20px;box-shadow:0 20px 70px #0006}.game-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.game-top h2{margin:0}.close-game{border:0;background:#eee5ff;color:#5630bb;border-radius:10px;padding:9px 13px;font-weight:800;cursor:pointer}.game-help{color:var(--muted);font-size:.9rem}.game-canvas-wrap{background:#211b36;border-radius:16px;padding:10px;display:flex;justify-content:center}.game-canvas-wrap canvas{width:min(100%,420px);height:auto;display:block;border-radius:9px;background:#171d2b}.game-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:13px}.game-actions button{border:0;border-radius:11px;padding:10px 15px;font-weight:800;background:var(--purple);color:white;cursor:pointer}.game-actions .secondary{background:#eee5ff;color:#5630bb}.touch-controls{display:grid;grid-template-columns:repeat(3,48px);gap:6px;justify-content:center;margin-top:12px}.touch-controls button{height:42px;border:0;border-radius:10px;background:#eee5ff;color:#5630bb;font-size:1.2rem;font-weight:900;cursor:pointer}.touch-controls button:nth-child(1){grid-column:2}.touch-controls button:nth-child(2){grid-column:1;grid-row:2}.touch-controls button:nth-child(3){grid-column:2;grid-row:2}.touch-controls button:nth-child(4){grid-column:3;grid-row:2}
+.note{margin-top:28px;padding:16px 18px;background:#fff3c4;border-radius:14px;color:#59491c;font-size:.9rem}footer{text-align:center;padding:24px;color:var(--muted);border-top:1px solid #eee5f7}.hidden{display:none!important}
+@media(max-width:760px){nav{gap:12px}nav a{display:none}.hero{padding:38px 25px}.hero:after{right:-4%;opacity:.3}.categories{grid-template-columns:repeat(2,1fr)}.games{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){main{padding:18px 14px 42px}.nav{padding:12px 15px}.brand{font-size:1.3rem}.games{grid-template-columns:1fr}.thumb{height:130px}}
+</style></head>
+<body>
+<header><div class="nav"><div class="brand"><span class="mark">🎮</span><b>KaliZone</b></div>
+<nav><a href="#home" data-en="Home" data-ml="ഹോം">Home</a><a href="#categories" data-en="Categories" data-ml="വിഭാഗങ്ങൾ">Categories</a><a href="#popular" data-en="Popular Games" data-ml="ജനപ്രിയ ഗെയിമുകൾ">Popular Games</a></nav>
+<button class="lang" id="langBtn">മലയാളം</button></div></header>
+<main id="home">
+<section class="hero"><div class="hero-copy"><div class="eyebrow">WELCOME TO KALIZONE</div>
+<h1 data-en="Play More.<br>Have Fun!" data-ml="കൂടുതൽ കളിക്കൂ.<br>ആസ്വദിക്കൂ!">Play More.<br>Have Fun!</h1>
+<p data-en="Your fun starts here. Discover games for every mood!" data-ml="നിങ്ങളുടെ വിനോദം ഇവിടെ തുടങ്ങുന്നു. എല്ലാ മൂഡിനും ഗെയിമുകൾ കണ്ടെത്തൂ!">Your fun starts here. Discover games for every mood!</p>
+<a class="cta" href="#popular" data-en="Explore Games →" data-ml="ഗെയിമുകൾ കാണാം →">Explore Games →</a></div></section>
+<div class="search">🔎 <input id="search" placeholder="Search games / ഗെയിമുകൾ തിരയുക"></div>
+<section id="categories"><div class="head"><div><h2 data-en="Explore Categories" data-ml="ഗെയിം വിഭാഗങ്ങൾ">Explore Categories</h2><p data-en="Pick your kind of fun" data-ml="നിങ്ങൾക്ക് ഇഷ്ടമുള്ളത് തിരഞ്ഞെടുക്കൂ">Pick your kind of fun</p></div></div>
+<div class="categories">
+<button class="category" data-filter="Racing"><span class="emoji">🏎️</span><strong data-en="Racing" data-ml="റേസിംഗ്">Racing</strong><div class="sub">Speed & skill</div></button>
+<button class="category" data-filter="Puzzle"><span class="emoji">🧩</span><strong data-en="Puzzle" data-ml="പസിൽ">Puzzle</strong><div class="sub">Think & solve</div></button>
+<button class="category" data-filter="Sports"><span class="emoji">🏏</span><strong data-en="Sports" data-ml="സ്പോർട്സ്">Sports</strong><div class="sub">Play to win</div></button>
+<button class="category" data-filter="Arcade"><span class="emoji">🕹️</span><strong data-en="Arcade" data-ml="ആർക്കേഡ്">Arcade</strong><div class="sub">Classic fun</div></button>
+</div></section>
+<section id="popular"><div class="head"><div><h2 data-en="Popular Games" data-ml="ജനപ്രിയ ഗെയിമുകൾ">Popular Games</h2><p data-en="A few games to get us started" data-ml="തുടങ്ങാൻ കുറച്ച് ഗെയിമുകൾ">A few games to get us started</p></div></div>
+<div class="games" id="gameGrid">
+<article class="game" data-category="Arcade" data-name="Snake"><div class="thumb t1">🐍</div><div class="info"><h3 data-en="Snake" data-ml="പാമ്പ് കളി">Snake</h3><p data-en="Arcade • Play now" data-ml="ആർക്കേഡ് • ഇപ്പോൾ കളിക്കാം">Arcade • Play now</p><button class="play" id="snakeOpen" data-en="Play Now" data-ml="കളിക്കാം">Play Now</button></div></article>
+<article class="game" data-category="Racing" data-name="Speed Racer"><div class="thumb t2">🏎️</div><div class="info"><h3 data-en="Speed Racer" data-ml="സ്പീഡ് റേസർ">Speed Racer</h3><p data-en="Racing • Coming soon" data-ml="റേസിംഗ് • ഉടൻ വരുന്നു">Racing • Coming soon</p><button class="play" disabled data-en="Coming Soon" data-ml="ഉടൻ വരുന്നു">Coming Soon</button></div></article>
+<article class="game" data-category="Puzzle" data-name="Puzzle Quest"><div class="thumb t3">🧩</div><div class="info"><h3 data-en="Puzzle Quest" data-ml="പസിൽ ക്വസ്റ്റ്">Puzzle Quest</h3><p>Puzzle • Coming soon</p><button class="play">Coming Soon</button></div></article>
+<article class="game" data-category="Arcade" data-name="Pixel Adventure"><div class="thumb t1">👾</div><div class="info"><h3 data-en="Pixel Adventure" data-ml="പിക്സൽ അഡ്വഞ്ചർ">Pixel Adventure</h3><p>Arcade • Coming soon</p><button class="play">Coming Soon</button></div></article>
+</div><div class="note" data-en="First homepage prototype. Game cards are placeholders; we'll add playable games next." data-ml="ആദ്യ ഹോംപേജ് മാതൃക. ഗെയിം കാർഡുകൾ ഇപ്പോൾ മാതൃകകൾ മാത്രമാണ്; അടുത്തതായി കളിക്കാവുന്ന ഗെയിമുകൾ ചേർക്കാം.">First homepage prototype. Game cards are placeholders; we'll add playable games next.</div>
+</section></main>
+<div class="game-modal" id="snakeModal" role="dialog" aria-modal="true" aria-labelledby="snakeTitle">
+ <div class="game-box">
+  <div class="game-top"><h2 id="snakeTitle">🐍 Snake Game</h2><button class="close-game" id="snakeClose" data-en="Close ✕" data-ml="അടയ്ക്കുക ✕">Close ✕</button></div>
+  <p class="game-help" data-en="Use arrow keys or the buttons. Eat the red food and avoid hitting yourself or the wall." data-ml="അമ്പടയാള കീകളോ താഴെയുള്ള ബട്ടണുകളോ ഉപയോഗിക്കുക. ചുവന്ന ഭക്ഷണം കഴിക്കുക; ഭിത്തിയിലും സ്വന്തം ശരീരത്തിലും ഇടിക്കരുത്.">Use arrow keys or the buttons. Eat the red food and avoid hitting yourself or the wall.</p>
+  <div class="game-canvas-wrap"><canvas id="snakeCanvas" width="400" height="400"></canvas></div>
+  <div class="game-top"><strong><span data-en="Score" data-ml="സ്കോർ">Score</span>: <span id="snakeScore">0</span></strong><span id="snakeStatus" aria-live="polite">Press Start to play</span></div>
+  <div class="game-actions"><button id="snakeStart" data-en="Start / Restart" data-ml="തുടങ്ങുക / വീണ്ടും തുടങ്ങുക">Start / Restart</button><button class="secondary" id="snakePause" data-en="Pause" data-ml="നിർത്തുക">Pause</button></div>
+  <div class="touch-controls" aria-label="Snake direction controls"><button data-dir="up">↑</button><button data-dir="left">←</button><button data-dir="down">↓</button><button data-dir="right">→</button></div>
+ </div>
+</div>
+<footer>© 2026 KaliZone · Play More. Have Fun!</footer>
+<script>
+let lang='en';const btn=document.getElementById('langBtn');
+btn.onclick=()=>{lang=lang==='en'?'ml':'en';document.documentElement.lang=lang;document.querySelectorAll('[data-en][data-ml]').forEach(el=>el.innerHTML=el.dataset[lang]);btn.textContent=lang==='en'?'മലയാളം':'English';};
+const search=document.getElementById('search');
+search.addEventListener('input',e=>{let q=e.target.value.toLowerCase();document.querySelectorAll('.game').forEach(c=>c.classList.toggle('hidden',!c.dataset.name.toLowerCase().includes(q)));});
+document.querySelectorAll('.category').forEach(b=>b.onclick=()=>{document.querySelectorAll('.game').forEach(c=>c.classList.toggle('hidden',c.dataset.category!==b.dataset.filter));document.getElementById('popular').scrollIntoView({behavior:'smooth'});});
+
+const modal=document.getElementById('snakeModal'),canvas=document.getElementById('snakeCanvas'),ctx=canvas.getContext('2d');
+const scoreEl=document.getElementById('snakeScore'),statusEl=document.getElementById('snakeStatus');
+const cell=20,tiles=20;let snake,food,dir,nextDir,score,timer=null,running=false,over=false;
+function randomFood(){let p;do{p={x:Math.floor(Math.random()*tiles),y:Math.floor(Math.random()*tiles)}}while(snake.some(s=>s.x===p.x&&s.y===p.y));return p}
+function draw(){
+ ctx.fillStyle='#171d2b';ctx.fillRect(0,0,400,400);
+ ctx.strokeStyle='#ffffff0c';for(let i=0;i<=400;i+=20){ctx.beginPath();ctx.moveTo(i,0);ctx.lineTo(i,400);ctx.stroke();ctx.beginPath();ctx.moveTo(0,i);ctx.lineTo(400,i);ctx.stroke()}
+ if(food){ctx.fillStyle='#ff5b67';ctx.beginPath();ctx.arc(food.x*cell+10,food.y*cell+10,8,0,Math.PI*2);ctx.fill()}
+ snake.forEach((p,i)=>{ctx.fillStyle=i===0?'#ffd84d':'#55d6be';ctx.beginPath();ctx.roundRect(p.x*cell+2,p.y*cell+2,16,16,5);ctx.fill()});
+}
+function setStatus(en,ml){statusEl.textContent=lang==='en'?en:ml}
+function reset(){clearInterval(timer);timer=null;snake=[{x:10,y:10},{x:9,y:10},{x:8,y:10}];dir={x:1,y:0};nextDir={x:1,y:0};score=0;over=false;running=false;food=randomFood();scoreEl.textContent='0';setStatus('Ready! Press Start','തയ്യാർ! തുടങ്ങുക അമർത്തൂ');draw()}
+function step(){
+ dir=nextDir;const head={x:snake[0].x+dir.x,y:snake[0].y+dir.y};
+ if(head.x<0||head.y<0||head.x>=tiles||head.y>=tiles||snake.some(p=>p.x===head.x&&p.y===head.y)){clearInterval(timer);timer=null;running=false;over=true;setStatus('Game over! Press Start to try again','കളി കഴിഞ്ഞു! വീണ്ടും കളിക്കാൻ തുടങ്ങുക അമർത്തൂ');return}
+ snake.unshift(head);
+ if(head.x===food.x&&head.y===food.y){score++;scoreEl.textContent=score;food=randomFood()}else snake.pop();
+ draw();
+}
+function start(){reset();running=true;setStatus('Playing…','കളിക്കുന്നു…');timer=setInterval(step,115)}
+function pause(){if(!running)return;clearInterval(timer);timer=null;running=false;setStatus('Paused','താൽക്കാലികമായി നിർത്തി')}
+function change(d){if(!running)return;const map={up:{x:0,y:-1},down:{x:0,y:1},left:{x:-1,y:0},right:{x:1,y:0}};const n=map[d];if(n&&!(n.x===-dir.x&&n.y===-dir.y))nextDir=n}
+document.getElementById('snakeOpen').onclick=()=>{modal.classList.add('open');reset()};
+document.getElementById('snakeClose').onclick=()=>{modal.classList.remove('open');clearInterval(timer);timer=null;running=false};
+document.getElementById('snakeStart').onclick=start;
+document.getElementById('snakePause').onclick=pause;
+document.querySelectorAll('[data-dir]').forEach(b=>b.onclick=()=>change(b.dataset.dir));
+document.addEventListener('keydown',e=>{if(!modal.classList.contains('open'))return;const keys={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right'};if(keys[e.key]){e.preventDefault();change(keys[e.key])}if(e.key==='Escape')document.getElementById('snakeClose').click()});
+reset();
+</script></body></html>
